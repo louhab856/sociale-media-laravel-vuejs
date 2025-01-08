@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('post_attachments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+            $table->foreignId('post_id')->constraind('posts');
+            $table->string('name', 255);
+            $table->string('path', 255);
+            $table->string('mime',25);
+            $table->foreignId('created_by')->constraind('users');
+            $table->timestamp('created_at')->nullable();
+
         });
     }
 

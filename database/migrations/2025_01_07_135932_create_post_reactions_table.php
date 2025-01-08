@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('post_reactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('post_id')->constraind('posts');
+            $table->string('type'); // like , dislike , sad 
+            $table->foreignId('user_id')->constraind('users');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

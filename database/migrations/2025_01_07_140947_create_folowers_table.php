@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('folowers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constraind('users');
+            $table->foreignId('follower_id')->constraind('users');
+            $table->timestamp('created_at');
         });
     }
 
